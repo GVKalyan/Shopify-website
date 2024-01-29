@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 
 export default function Login() {
 
@@ -19,14 +20,14 @@ export default function Login() {
         
         if (formValues.gmailId === "") {
             error.gmailId = 'write gmailId'
-        } else if (formValues.gmailId.length < 3) {
-            error.gmailId = 'please enter valid gmailId'
+        } else if (formValues.gmailId.length < 9) {
+            error.gmailId = 'please enter valid gmailId, (Note:It should have atleast 10 Letters)'
         }
 
         if (formValues.password === "") {
             error.password = 'write password'
-        } else if (formValues.password.length < 3) {
-            error.password = 'please enter valid password'
+        } else if (formValues.password.length < 9) {
+            error.password = 'please enter valid password, (Note:It should have atleast 10 Letters)'
         }
 
         setFormError(error) 
@@ -35,8 +36,11 @@ export default function Login() {
     return (
         <>  
            <div className="cntr mt-5 bg-primary-subtle ">
+                
                 <form onSubmit={(e) => validations(e)}>
                     <div className="mb-3">
+                        <Link to="/" className="nav-link active mt-5" aria-current="page"><h1>Shopify</h1></Link>
+                        <br></br>
                         <label for="exampleInputEmail1" className="form-label">Email Id :</label>
                         <input type="text"
                             name='gmailId'
@@ -59,7 +63,7 @@ export default function Login() {
                     </div>
                     <br></br>
 
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <button type="submit" className="btn btn-primary mb-5">Submit</button>
                 </form>
             </div>
         </>
